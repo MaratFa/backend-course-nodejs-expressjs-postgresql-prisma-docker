@@ -5,13 +5,24 @@ const express = require("express");
 const app = express();
 const PORT = 8383;
 
-// HTTP VERBS && Routes (or paths)
+// ENDPOINT - HTTP VERBS (method) && Routes (or paths)
 // The method informs the nature of request and the route is a further subdirectory (basically we direct the request to the body of code to respond appropriately, and these locations or routes are called endpoints)
 
+// Type 1 - Wwbsite endpoints (these endpoints are for sending back html and they typically come when a user enters a url in a browser)
+
 app.get("/", (req, res) => {
-  // this is endpoint number 1 - /
-  console.log("Yay I hit an endpoint", req.method);
-  res.sendStatus(200);
+  res.send("<h1>homepage</h1><input />");
+});
+
+app.get("/dashboard", (req, res) => {
+  res.send("<h1>dashboard</h1>");
+});
+
+// Type 2 - API endpoints (non visual)
+
+app.get("/api/data", (req, res) => {
+  console.log("This one was for data");
+  res.send(data);
 });
 
 app.listen(PORT, () => console.log(`Server has started on: ${PORT}`));
