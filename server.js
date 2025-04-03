@@ -5,13 +5,21 @@ const express = require("express");
 const app = express();
 const PORT = 8383;
 
+let data = {
+  name: "james",
+};
+
 // ENDPOINT - HTTP VERBS (method) && Routes (or paths)
 // The method informs the nature of request and the route is a further subdirectory (basically we direct the request to the body of code to respond appropriately, and these locations or routes are called endpoints)
 
 // Type 1 - Wwbsite endpoints (these endpoints are for sending back html and they typically come when a user enters a url in a browser)
 
 app.get("/", (req, res) => {
-  res.send("<h1>homepage</h1><input />");
+  res.send(`
+    <body>
+
+    </body>
+    `);
 });
 
 app.get("/dashboard", (req, res) => {
@@ -19,6 +27,8 @@ app.get("/dashboard", (req, res) => {
 });
 
 // Type 2 - API endpoints (non visual)
+
+// CRUD-method create-post read-get update-put and delete-delete
 
 app.get("/api/data", (req, res) => {
   console.log("This one was for data");
