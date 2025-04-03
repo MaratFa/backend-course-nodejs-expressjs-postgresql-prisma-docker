@@ -16,8 +16,9 @@ let data = {
 
 app.get("/", (req, res) => {
   res.send(`
-    <body>
-
+    <body style="background:pink; color: blue;">
+      <h1>DATA:</h1>
+        <p>${JSON.stringify(data)}</p>
     </body>
     `);
 });
@@ -33,6 +34,12 @@ app.get("/dashboard", (req, res) => {
 app.get("/api/data", (req, res) => {
   console.log("This one was for data");
   res.send(data);
+});
+
+app.post("/api/data", (req, res) => {
+  // someone wants to create a user (for example when they click a sign up button)
+  // the user clicks the sign up button after entering their credentials, and their browser is wired up to send out a network request to the server to handle that action
+  const newEntry = req.body;
 });
 
 app.listen(PORT, () => console.log(`Server has started on: ${PORT}`));
