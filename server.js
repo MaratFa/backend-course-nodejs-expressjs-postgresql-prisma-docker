@@ -5,9 +5,10 @@ const express = require("express");
 const app = express();
 const PORT = 8383;
 
-let data = {
-  name: "james",
-};
+let data = ["james"];
+
+// Middleware
+app.use(express.json());
 
 // ENDPOINT - HTTP VERBS (method) && Routes (or paths)
 // The method informs the nature of request and the route is a further subdirectory (basically we direct the request to the body of code to respond appropriately, and these locations or routes are called endpoints)
@@ -40,6 +41,9 @@ app.post("/api/data", (req, res) => {
   // someone wants to create a user (for example when they click a sign up button)
   // the user clicks the sign up button after entering their credentials, and their browser is wired up to send out a network request to the server to handle that action
   const newEntry = req.body;
+  console.log(newEntry);
+  data.push(newEntry.name);
+  res.sendStatus(201);
 });
 
 app.listen(PORT, () => console.log(`Server has started on: ${PORT}`));
