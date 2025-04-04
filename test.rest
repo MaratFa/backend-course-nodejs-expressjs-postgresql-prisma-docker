@@ -15,3 +15,6 @@ Content-Type: application/json
 {
   "name": "gilgamesh"
 }
+
+### DELETE ENDPOINT
+DELETE http://localhost:8383/api/data
