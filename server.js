@@ -16,24 +16,23 @@ app.use(express.json());
 // Type 1 - Wwbsite endpoints (these endpoints are for sending back html and they typically come when a user enters a url in a browser)
 
 app.get("/", (req, res) => {
+  console.log("User requested the home page website");
   res.send(`
     <body style="background:pink; color: blue;">
       <h1>DATA:</h1>
-        <p>${JSON.stringify(data)}</p>
-        <a href="/dashboard">Dashboard</a>
+      <p>${JSON.stringify(data)}</p>
+      <a href="/dashboard">Dashboard</a>
     </body>
+    <script>console.log('This is my script')</script>
     `);
 });
 
 app.get("/dashboard", (req, res) => {
   res.send(`
     <body>
-    <h1>dashboard</h1>
-    <a href="/">home</a>
+      <h1>dashboard</h1>
+      <a href="/">home</a>
     </body>
-
-
-    
     `);
 });
 
@@ -43,7 +42,7 @@ app.get("/dashboard", (req, res) => {
 
 app.get("/api/data", (req, res) => {
   console.log("This one was for data");
-  res.send(data);
+  res.status(599).send(data);
 });
 
 app.post("/api/data", (req, res) => {
